@@ -31,7 +31,7 @@ public abstract class AbstractDao<T extends Serializable> implements IAbstractDa
 			tx.commit();
 		}
 		catch (HibernateException e) {
-			e.printStackTrace();
+			tx.rollback();
 		}
 		finally {
 			session.close();
@@ -49,7 +49,7 @@ public abstract class AbstractDao<T extends Serializable> implements IAbstractDa
 			tx.commit();
 		}
 		catch (HibernateException e) {
-			e.printStackTrace();
+			tx.rollback();
 		}
 		finally {
 			session.close();
@@ -64,7 +64,7 @@ public abstract class AbstractDao<T extends Serializable> implements IAbstractDa
 			tx.commit();
 		}
 		catch (HibernateException e) {
-			e.printStackTrace();
+			tx.rollback();
 		}
 		finally {
 			session.close();
@@ -80,7 +80,7 @@ public abstract class AbstractDao<T extends Serializable> implements IAbstractDa
 			tx.commit();
 		}
 		catch (HibernateException e) {
-			e.printStackTrace();
+			tx.rollback();
 		}
 		finally {
 			session.close();
@@ -95,7 +95,7 @@ public abstract class AbstractDao<T extends Serializable> implements IAbstractDa
 			tx.commit();
 		}
 		catch (HibernateException e) {
-			e.printStackTrace();
+			tx.rollback();
 		}
 		finally {
 			session.close();

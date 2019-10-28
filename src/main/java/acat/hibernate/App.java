@@ -46,8 +46,11 @@ public class App {
 			sb.append("Laptop [id="+laptop.getId());
 			sb.append(", brand="+laptop.getBrand());
 			sb.append(", description="+laptop.getDescription());
-			sb.append(", person_id="+laptop.getPerson().getId());
+			sb.append(", person_id="+laptop.getPerson().getId()+"]");
 			System.out.println(sb.toString()+" have been inserted!");
 		}
+		
+		Laptop l = laptopDao.findOne(1);
+		laptopDao.delete(l);
     }
 }
