@@ -4,6 +4,7 @@ import java.util.List;
 
 import acat.hibernate.dao.LaptopDao;
 import acat.hibernate.dependency.DependencyRegistry;
+import acat.hibernate.dto.LaptopDto;
 import acat.hibernate.entity.FullName;
 import acat.hibernate.entity.Laptop;
 import acat.hibernate.entity.Person;
@@ -50,7 +51,12 @@ public class App {
 			System.out.println(sb.toString()+" have been inserted!");
 		}
 		
-		Laptop l = laptopDao.findOne(1);
-		laptopDao.delete(l);
+		Laptop laptop = laptopDao.findOne(1); //get laptop at id=1;
+		//System.out.println(laptop.getBrand()); //This will make LazyInitializationException.
+		LaptopDto dto = dependency.createLaptopDto(laptop); //To avoid LazyInitializationException, use DTO
+		System.out.println(dto.getPerson());
+		if (laptop!=null) {
+			laptopDao.delete(laptop);
+		}
     }
 }
