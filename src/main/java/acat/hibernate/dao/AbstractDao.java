@@ -27,7 +27,7 @@ public abstract class AbstractDao<T extends Serializable> implements IAbstractDa
 		T entity = null;
 		try {
 			startOperation();
-			entity = session.load(entityName, id);
+			entity = session.get(entityName, id);
 			tx.commit();
 		}
 		catch (HibernateException e) {
