@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,7 +30,7 @@ public class Person extends BaseEntity<Long> implements Serializable {
 	@Column(name = "phNo")
 	private String phNo;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "person", fetch = FetchType.EAGER)
 	private List<Laptop> laptop = new ArrayList<Laptop>();;
 
 	public FullName getFullName() {
